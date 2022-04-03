@@ -65,7 +65,7 @@ local function assert_user_conditions()
 			end
 		elseif condition == "modifiable" then
 			if value == true then
-				if api.nvim_eval([[&modifiable]]) == 0 then
+				if api.nvim_eval([[&modifiable - &readonly]]) ~= 1 then
 					sc_modifiable = false
 					break
 				end
